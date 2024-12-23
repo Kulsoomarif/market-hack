@@ -10,7 +10,7 @@ const Editors = () => {
           Problems trying to resolve the conflict between
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          <div className="relative w-full h-72">
+          <div className=" grid-cols-2 grid-rows-2 relative w-full h-72">
             <Image
               src="/editors/man.jpg"
               alt="Men"
