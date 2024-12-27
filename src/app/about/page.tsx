@@ -13,19 +13,20 @@ const About = () => {
           <div className="flex-1 text-center md:text-left py-4">
             <h3 className="font-bold text-3xl mb-4">Our Company</h3>
             <h1 className="text-5xl md:text-6xl font-extrabold mb-4">ABOUT US</h1>
-            <p className="text-lg text-gray-600 mb-6">
-              We are here to grow your dreams into reality.
-            </p>
+            <h4 className="text-lg text-gray-600 mb-6">
+            We know how large objects will act, 
+but things on a small scale.
+            </h4>
             <button className="bg-blue-600 text-white px-6 py-3 rounded-md mt-4">
               Get Quote Now
             </button>
           </div>
-          <div className="flex-1 mt-8 md:mt-0">
+          <div className="flex-1 mt-8 md:mt-0 left-34px ">
             <Image
               src="/about/girl.png"
               alt="Shopping girl"
-              width={800}
-              height={900}
+              width={668}
+              height={571}
               className="mx-auto rounded-lg"
             />
           </div>

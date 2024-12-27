@@ -1,132 +1,131 @@
 "use client";
+import Link from "next/link"; 
+import React, { useState } from "react";
 
-import { useState } from "react";
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"; // Adjust this path as needed
-import { ShoppingCart, Heart, Search, Menu } from "lucide-react"; // Ensure lucide-react is installed
 
 const Header2 = () => {
+  const [isClick, setisClick] = useState(false);
+
+  const toggleNavbar = () => {
+    setisClick(!isClick);
+  };
+
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-grey-300 shadow-md">
       <nav className="container mx-auto flex justify-between items-center p-4">
         {/* Brand */}
-        <div className="text-lg font-bold">Bandage</div>
+        <div className="text-2x1 font-bold">
+          Bandage
+        </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 text-gray-600">
-          <li>
-            <a href="/" className="hover:text-blue-600">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/product" className="hover:text-blue-600">
-              Product
-            </a>
-          </li>
-          <li>
-            <a href="/pricing" className="hover:text-blue-600">
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a href="/contact" className="hover:text-blue-600">
-              Contact
-            </a>
-          </li>
-        </ul>
+        <div className="hidden md:block">
+          <ul className="flex space-x-6 text-gray-600">
+            <li>
+              <Link href="/" className="hover:text-blue-600">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/product" className="hover:text-blue-600">
+                Product
+              </Link>
+            </li>
+            <li>
+              <Link href="/pricing" className="hover:text-blue-600">
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-blue-600">
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
 
         {/* Desktop Actions */}
         <div className="hidden md:flex space-x-4">
-          <a href="/login" className="text-blue-600 hover:underline">
+          <Link href="/login" className="text-blue-600 hover:underline">
             Login/SignUp
-          </a>
-          <a
+          </Link>
+          <Link
             href="/team"
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
           >
             Become a member
-          </a>
-          <Search />
-          <Heart />
-          <ShoppingCart />
-        </div>
+          </Link>
+          </div>
 
         {/* Mobile Menu Button */}
-        <div className="block md:hidden">
-          <SmallScreenMenu />
+        <div className="md:hidden">
+          <button
+            className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-black"
+            onClick={toggleNavbar}
+          >
+            {isClick ? (
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            )}
+          </button>
         </div>
       </nav>
-    </header>
-  );
-};
 
-const SmallScreenMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <button
-          className="text-gray-600 p-2"
-          aria-label="Open Menu"
-        >
-          <Menu className="h-6 w-6" />
-        </button>
-      </SheetTrigger>
-      <SheetContent side="left" className="p-4">
-        <div className="space-y-4">
-          <a
-            href="/"
-            className="block text-gray-600 hover:text-blue-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </a>
-          <a
-            href="/product"
-            className="block text-gray-600 hover:text-blue-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Product
-          </a>
-          <a
-            href="/pricing"
-            className="block text-gray-600 hover:text-blue-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Pricing
-          </a>
-          <a
-            href="/contact"
-            className="block text-gray-600 hover:text-blue-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </a>
-          <div className="pt-4 border-t border-gray-200">
-            <a
-              href="/login"
-              className="block text-blue-600 hover:underline"
-              onClick={() => setIsOpen(false)}
-            >
-              Login/SignUp
-            </a>
-            <a
-              href="/team"
-              className="block px-4 py-2 mt-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-              onClick={() => setIsOpen(false)}
-            >
-              Become a member
-            </a>
-          </div>
-          <div className="flex space-x-4 pt-4">
-            <Search className="text-gray-600" />
-            <Heart className="text-gray-600" />
-            <ShoppingCart className="text-gray-600" />
-          </div>
+      {/* Mobile Menu */}
+      {isClick && (
+        <div className="md:hidden px-4 py-2 bg-white shadow-lg">
+          <ul className="space-y-2">
+            <li>
+              <Link href="/" className="block text-gray-700 hover:text-blue-600">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/product" className="block text-gray-700 hover:text-blue-600">
+                Product
+              </Link>
+            </li>
+            <li>
+              <Link href="/pricing" className="block text-gray-700 hover:text-blue-600">
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="block text-gray-700 hover:text-blue-600">
+                Contact
+              </Link>
+            </li>
+          </ul>
         </div>
-      </SheetContent>
-    </Sheet>
+      )}
+    </header>
   );
 };
 
