@@ -12,7 +12,7 @@ const page = () => {
       <section className="px-6 md:px-12 lg:px-24 py-12 text-center bg-gradient-to-b from-blue-50 to-white">
         <h2 className="text-4xl font-bold text-gray-800">Get in Touch Today!</h2>
         <p className="text-gray-600 mt-4 max-w-xl mx-auto text-lg">
-          We know how large objects will act, but things on a small scale can be unpredictable. Let's connect and discuss!
+          We know how large objects will act, but things on a small scale can be unpredictable. Lets connect and discuss!
         </p>
         <div className="mt-6 text-gray-600 space-y-2 text-lg">
           <p>Phone: <a href="tel:+451215215" className="text-blue-600 hover:underline">+451 215 215</a></p>
@@ -100,7 +100,7 @@ const page = () => {
       {/* Let's Talk Section */}
       <section className="text-center py-16 bg-blue-600 text-white">
         <h3 className="text-xl mb-4">We Cannot Wait to Meet You</h3>
-        <h2 className="text-4xl font-bold">Let's Talk</h2>
+        <h2 className="text-4xl font-bold">Lets Talk</h2>
         <button className="mt-6 px-8 py-3 bg-white text-blue-600 rounded-md hover:bg-gray-200">
           Try It Free Now
         </button>
