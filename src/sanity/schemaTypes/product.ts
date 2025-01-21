@@ -13,6 +13,12 @@ const productSchema = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name:"slug",
+      type:"slug",
+      options:{
+        source:"title"}
+    })
+    defineField({
       name: 'description',
       type: 'text',
       title: 'Description',

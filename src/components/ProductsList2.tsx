@@ -16,6 +16,10 @@ type Product = {
       _ref: string;
       _type: 'reference';
     };
+    slug:{
+      _type:"slug",
+      current:string
+    }
   };
 };
 

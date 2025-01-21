@@ -20,6 +20,10 @@ type Product = {
       _ref: string;
       _type: "image";
     };
+    slug:{
+     _type:"slug"
+     current: string;
+    }
   };
 };
 
