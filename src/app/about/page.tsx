@@ -1,12 +1,11 @@
-import Image from 'next/image';
-import Header2 from "@/components/Header2";
+import Image from 'next/image'
 import TopFooter from "@/components/TopFooter";
 import Footer from "@/components/Footer";
 
 const About = () => {
   return (
     <div>
-      <Header2 />
+      
       <div className="bg-white text-gray-900">
         {/* Main Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-8 py-16 flex flex-col md:flex-row items-center justify-between gap-8">

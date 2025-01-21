@@ -1,13 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Header2 from "@/components/Header2";
 import TopFooter from "@/components/TopFooter";
 import Footer from "@/components/Footer";
 
 const page = () => {
   return (
     <div>
-      <Header2 />
       {/* Contact Section */}
       <section className="px-6 md:px-12 lg:px-24 py-12 text-center bg-gradient-to-b from-blue-50 to-white">
         <h2 className="text-4xl font-bold text-gray-800">Get in Touch Today!</h2>

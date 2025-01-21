@@ -1,13 +1,12 @@
 import React from 'react';
 import Image from "next/image";
-import Header2 from "@/components/Header2";
 import TopFooter from "@/components/TopFooter";
 import Footer from "@/components/Footer";
 
 const pricing = () => {
   return (
     <div>
-      <Header2 />
+
       <div className="bg-gray-50 min-h-screen">
         <header className="text-center py-8">
           <h1 className="text-4xl font-bold">Simple Pricing</h1>

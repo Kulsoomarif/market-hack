@@ -24,8 +24,11 @@ const Header = () => {
           <Link href="/about" className="hover:text-blue-600">
           About
           </Link>
-          <Link href="/shop" className="hover:text-blue-600">
-          Shop
+          <Link href="/product" className="hover:text-blue-600">
+          Product
+          </Link>
+          <Link href="/pricing" className="hover:text-blue-600">
+          Pricing
           </Link>
           <Link href="/contact" className="hover:text-blue-600">
             Contact
@@ -88,11 +91,15 @@ const Header = () => {
             </li>
            
             <li>
-            <Link href="/shop" className="block hover:text-blue-600">
-            shop
+            <Link href="/product" className="block hover:text-blue-600">
+            Product
             </Link>
           </li>
-             
+          <li>
+            <Link href="/pricing" className="block hover:text-blue-600">
+            Pricing
+            </Link>
+          </li>
               
               <li>
               <Link href="/contact" className="block hover:text-blue-600">
