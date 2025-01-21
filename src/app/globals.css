@@ -76,3 +76,26 @@ body {
     @apply bg-background text-foreground;
   }
 }
+/* Add this to your global CSS or a CSS module */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.w-full {
+  width: 100%;
+}

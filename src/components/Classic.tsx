@@ -22,7 +22,7 @@ const Classic = () => {
             </p>
           </div>
           <div className="mt-6 md:mt-0 ">
-            <Image src="/boy.png" alt="Vita Classic" width={300} height={300} className="p-3 rounded" />
+            <Image src="/soof.png" alt="Vita Classic" width={300} height={300} className="p-3 rounded" />
           </div>
         </div>
       </section>

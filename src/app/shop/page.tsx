@@ -1,79 +1,61 @@
+"use client";
 import React from "react";
+import { useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
+import { allproducts } from "@/sanity/lib/queries";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image"; // Import the urlFor function
 
-const items = [
-  {
-    id: 1,
-    title: "Graphic Design",
-    department: "English Department",
-    price: "$16.48",
-    discounted: "$6.48",
-    rating: 4,
-    img: "/shop/s2.jpg",
-  },
-  {
-    id: 2,
-    title: "Graphic Design",
-    department: "English Department",
-    price: "$16.48",
-    discounted: "$6.48",
-    rating: 4,
-    img: "/shop/s3.jpg",
-  },
-];
+type Product = {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+  tags: string[];
+  discountPercentage: number;
+  imageUrl: {
+    asset: {
+      _ref: string;
+      _type: "image";
+    };
+  };
+};
 
-const Shop: React.FC = () => {
+const Shop = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      const fetchedProducts: Product[] = await client.fetch(allproducts);
+      setProducts(fetchedProducts);
+    }
+    fetchProduct();
+  }, []);
+
   return (
-    <div className="bg-white">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">Shop</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="relative group">
-            <Image
-              src="/shop/category1.jpg"
-              alt="Category 1"
-              className="w-full rounded-lg"
-              width={500} // Define the width of the image
-              height={300} // Define the height of the image
-              layout="responsive" // This ensures the image is responsive
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-30 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <span className="text-white text-xl font-bold">CLOTHS</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {items.map((item) => (
-            <div key={item.id} className="bg-gray-100 rounded-lg shadow-md p-4">
+    <div>
+      <div className="max-w-6xl font-bold mx-auto px-4 py-8">
+        <h1 className="text-2x1 font-bold  mb-6 text-center">Our Latest Products  </h1>
+        <div className=" grid grid-col-1 sm:grid-col-2 md:grid-col-3 lg:grid-col-4">
+        {products.map((product) => (
+          <div className=" border rounde-lg shadow-md p-4 hover:shadow-lg transition duration-200 font-bold" key={product._id}>
+            
+            {product.imageUrl && (
               <Image
-                src={item.img}
-                alt={item.title}
-                className="w-full rounded-lg mb-4"
-                width={400} 
-                height={300}
-                layout="responsive"
+                src={urlFor(product.imageUrl).url()} // Generate the image URL
+                alt={product.title}
+                width={200}
+                height={200}
+                className="w-full h-48 object-cover rounded-md"
               />
-              <h2 className="text-lg font-bold">{item.title}</h2>
-              <p className="text-sm text-gray-600">{item.department}</p>
-              <div className="flex items-center justify-between mt-4">
-                <span className="text-green-600 font-bold">{item.discounted}</span>
-                <span className="text-gray-400 line-through">{item.price}</span>
-              </div>
-              <div className="flex items-center mt-2">
-                {[...Array(item.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-sm">★</span>
-                ))}
-                {[...Array(5 - item.rating)].map((_, i) => (
-                  <span key={i} className="text-gray-300 text-sm">★</span>
-                ))}
-              </div>
-            </div>
-          ))}
+            )}
+            <h1 className="font-semibold text-lg mt-4">{product.title}</h1>
+            <p className="font-semibold text-grey-600 mt-2">Price: ${product.price}</p>
+          </div>
+          
+        ))}
         </div>
       </div>
 

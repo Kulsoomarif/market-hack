@@ -28,8 +28,8 @@ const Universe = () => {
           {/* Image Section */}
           <div className="mt-8 lg:mt-0">
             <Image
-              src="/couple.png"
-              alt="Couple in scarf"
+              src="/seater.jpg"
+              alt="seater"
               width={500}
               height={500}
               className="rounded-lg"
@@ -57,73 +57,79 @@ const Universe = () => {
 
       {/* Cards Section */}
       <section className="px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-          {/* Card 1 */}
-          <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Card 1 */}
+        <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-lg overflow-hidden">
+          <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 relative">
             <Image
-              src="/roads1.jpg"
+              src="/room1.jpg"
               alt="Colorful street"
-              width={400}
-              height={300}
+              layout="fill"
+              objectFit="cover"
               className="rounded-t-lg"
             />
-            <div className="p-4">
-              <p className="text-sm text-green-500 mb-2">Trending | New</p>
-              <p className="text-lg font-semibold text-gray-800">
-                Loudest à la Madison #1 (L Integral)
-              </p>
-              <p className="text-gray-500 mt-2">
-                We focus on ergonomics and meeting you where you work.
-              </p>
-              <p className="text-gray-400 text-sm mt-4">22 April 2021</p>
-            </div>
           </div>
-
-          {/* Card 2 */}
-          <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-lg">
-            <Image
-              src="/car2.jpg"
-              alt="Pink car"
-              width={420}
-              height={320}
-              className="rounded-t-lg"
-            />
-            <div className="p-4">
-              <p className="text-sm text-green-500 mb-2">Trending | New</p>
-              <p className="text-lg font-semibold text-gray-800">
-                Loudest à la Madison #1 (L Integral)
-              </p>
-              <p className="text-gray-500 mt-2">
-                We focus on ergonomics and meeting you where you work.
-              </p>
-              <p className="text-gray-400 text-sm mt-4">22 April 2021</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-lg">
-            <Image
-              src="/umbrella3.jpg"
-              alt="Umbrellas"
-              width={200}
-              height={450}
-              className="rounded-t-lg"
-            />
-            <div className="p-4">
-              <h5 className="text-blue-600">Practice Advice</h5>
-              <p className="text-sm text-green-500 mb-2">Trending | New</p>
-              <p className="text-lg font-semibold text-gray-800">
-                Loudest à la Madison #1 (L Integral)
-              </p>
-              <p className="text-gray-500 mt-2">
-                We focus on ergonomics and meeting you where you work.
-              </p>
-              <p className="text-gray-400 text-sm mt-4">22 April 2021</p>
-            </div>
+          <div className="p-4">
+            <p className="text-sm text-green-500 mb-2">Trending | New</p>
+            <p className="text-lg font-semibold text-gray-800">
+              Loudest à la Madison #1 (L Integral)
+            </p>
+            <p className="text-gray-500 mt-2">
+              We focus on ergonomics and meeting you where you work.
+            </p>
+            <p className="text-gray-400 text-sm mt-4">22 April 2021</p>
           </div>
         </div>
-      </section>
-    </div>
+
+        {/* Card 2 */}
+        <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-lg overflow-hidden">
+          <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 relative">
+            <Image
+              src="/room2.jpg"
+              alt="Pink car"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-t-lg"
+            />
+          </div>
+          <div className="p-4">
+            <p className="text-sm text-green-500 mb-2">Trending | New</p>
+            <p className="text-lg font-semibold text-gray-800">
+              Loudest à la Madison #1 (L Integral)
+            </p>
+            <p className="text-gray-500 mt-2">
+              We focus on ergonomics and meeting you where you work.
+            </p>
+            <p className="text-gray-400 text-sm mt-4">22 April 2021</p>
+          </div>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-lg overflow-hidden">
+          <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 relative">
+            <Image
+              src="/room3.jpeg"
+              alt="room"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-t-lg"
+            />
+          </div>
+          <div className="p-4">
+            <h5 className="text-blue-600">Practice Advice</h5>
+            <p className="text-sm text-green-500 mb-2">Trending | New</p>
+            <p className="text-lg font-semibold text-gray-800">
+              Loudest à la Madison #1 (L Integral)
+            </p>
+            <p className="text-gray-500 mt-2">
+              We focus on ergonomics and meeting you where you work.
+            </p>
+            <p className="text-gray-400 text-sm mt-4">22 April 2021</p>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
   );
 };
 

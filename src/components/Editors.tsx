@@ -5,57 +5,60 @@ const Editors = () => {
   return (
     <div className="flex flex-col gap-16">
       <section className="px-4 py-12">
-        <h2 className="text-center text-xl font-semibold mb-2"> Editors Pick</h2>
+        <h2 className="text-center text-xl font-semibold mb-2">Editors Pick</h2>
         <p className="text-center text-gray-500 mb-8">
           Problems trying to resolve the conflict between
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          <div className=" grid-cols-2 grid-rows-2 relative w-full h-72">
+          {/* Men */}
+          <div className="relative w-full h-72">
             <Image
-              src="/editors/man.jpg"
+              src="/editors/chair.jpg"
               alt="Men"
               layout="fill"
-              objectFit="cover"
               className="rounded-md"
             />
-            <span className="absolute bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
-              Men
+            <span className="absolute text-bold bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
+              Chair
             </span>
           </div>
+
+          {/* Women */}
           <div className="relative w-full h-72">
             <Image
-              src="/editors/women.jpg"
+              src="/editors/Sofa.jpg"
               alt="Women"
               layout="fill"
-              objectFit="cover"
               className="rounded-md"
             />
-            <span className="absolute bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
-              Women
+            <span className="absolute text-bold bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
+              Sofa
             </span>
           </div>
+
+          {/* Accessories */}
           <div className="relative w-full h-72">
             <Image
-              src="/editors/acessories.jpg"
+              src="/editors/bed.jpg"
               alt="Accessories"
               layout="fill"
-              objectFit="cover"
               className="rounded-md"
             />
-            <span className="absolute bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
-              Accessories
+            <span className="absolute text-bold  bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
+              Bed
             </span>
           </div>
+
+          {/* Kids */}
           <div className="relative w-full h-72">
             <Image
-              src="/editors/kids.jpg"
-              alt="Kids"
+              src="/editors/table.jpg"
+              alt="Table"
               layout="fill"
-              objectFit="cover"
               className="rounded-md"
             />
-            <span className="absolute bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
-              Kids
+            <span className="absolute text-bold bottom-4 left-4 bg-white text-gray-800 px-4 py-1 text-sm">
+              Table
             </span>
           </div>
         </div>

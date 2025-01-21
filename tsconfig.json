@@ -1,26 +1,41 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "target": "ES2020", // Use ES2020 (or ES2017 if preferred)
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], // Libraries to include
+    "strict": true, // Enable strict type-checking
+    "noEmit": true, // Do not emit npoutput files
+    "jsx": "preserve", // Preserve JSX syntax
+    "moduleResolution": "node", // Resolve modules in a Node.js-like fashion
+    "esModuleInterop": true, // Enable ES module compatibility
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure consistent file naming
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Ensure each file can be transpiled independently
+    "incremental": true, // Enable incremental compilation
     "plugins": [
       {
-        "name": "next"
+        "name": "next" // Next.js TypeScript plugin
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ] // Path aliases for imports
+    },
+    "allowJs": true,
+    "module": "esnext"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts", // Next.js TypeScript declarations
+    "**/*.ts", // Include all TypeScript files
+    "**/*.tsx", // Include all TypeScript JSX files
+    ".next/types/**/*.ts" // Include Next.js generated types
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules directory
+  ]
 }

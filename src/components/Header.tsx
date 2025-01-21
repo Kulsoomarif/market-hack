@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Heart, Search, ShoppingCart } from "lucide-react";
 
 const Header = () => {
-  const [isShopOpen, setIsShopOpen] = useState(false);
+  
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -21,41 +21,16 @@ const Header = () => {
           <Link href="/" className="hover:text-blue-600">
             Home
           </Link>
-          <div
-            className="relative group"
-            onMouseEnter={() => setIsShopOpen(true)}
-            onMouseLeave={() => setIsShopOpen(false)}
-          >
-            <button className="hover:text-blue-600 flex items-center gap-1">
-              Shop
-              <span className="text-sm">▼</span>
-            </button>
-            {isShopOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg w-48">
-                <Link href="/shop/shop" className="block px-4 py-2 hover:bg-gray-100">
-                  Shop
-                </Link>
-                <Link href="/shop/team" className="block px-4 py-2 hover:bg-gray-100">
-                  Team
-                </Link>
-                <Link href="/shop/pricing" className="block px-4 py-2 hover:bg-gray-100">
-                  Pricing
-                </Link>
-              </div>
-            )}
-          </div>
           <Link href="/about" className="hover:text-blue-600">
-            About
+          About
           </Link>
-          <Link href="/blog" className="hover:text-blue-600">
-            Blog
+          <Link href="/shop" className="hover:text-blue-600">
+          Shop
           </Link>
           <Link href="/contact" className="hover:text-blue-600">
             Contact
           </Link>
-          <Link href="/pages" className="hover:text-blue-600">
-            Pages
-          </Link>
+          
         </nav>
 
         {/* Icons */}
@@ -107,54 +82,24 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <button
-                onClick={() => setIsShopOpen(!isShopOpen)}
-                className="w-full text-left hover:text-blue-600 flex items-center gap-1"
-              >
-                Shop
-                <span className="text-sm">▼</span>
-              </button>
-              {isShopOpen && (
-                <ul className="mt-2 bg-gray-50 rounded-lg shadow-inner">
-                  <li>
-                    <Link href="/shop/shop" className="block px-4 py-2 hover:bg-gray-100">
-                      Shop
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/shop/team" className="block px-4 py-2 hover:bg-gray-100">
-                      Team
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/shop/pricing" className="block px-4 py-2 hover:bg-gray-100">
-                      Pricing
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            <li>
               <Link href="/about" className="block hover:text-blue-600">
                 About
               </Link>
             </li>
+           
             <li>
-              <Link href="/blog" className="block hover:text-blue-600">
-                Blog
-              </Link>
-            </li>
-            <li>
+            <Link href="/shop" className="block hover:text-blue-600">
+            shop
+            </Link>
+          </li>
+             
+              
+              <li>
               <Link href="/contact" className="block hover:text-blue-600">
                 Contact
               </Link>
             </li>
-            <li>
-              <Link href="/pages" className="block hover:text-blue-600">
-                Pages
-              </Link>
-            </li>
-          </ul>
+                     </ul>
         </nav>
       )}
     </header>
