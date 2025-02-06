@@ -24,8 +24,8 @@ const Header = () => {
           <Link href="/about" className="hover:text-blue-600">
           About
           </Link>
-          <Link href="/product" className="hover:text-blue-600">
-          Product
+          <Link href="/shop" className="hover:text-blue-600">
+          Shop
           </Link>
           <Link href="/pricing" className="hover:text-blue-600">
           Pricing
@@ -47,9 +47,11 @@ const Header = () => {
           <button aria-label="Wishlist" className="hover:text-blue-600">
             <Heart />
           </button>
-          <button aria-label="Cart" className="hover:text-blue-600">
-            <ShoppingCart />
-          </button>
+          <Link href="/cart">
+  <button aria-label="Cart" className="hover:text-blue-600 flex items-center gap-2">
+    <ShoppingCart />
+  </button>
+</Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -91,8 +93,8 @@ const Header = () => {
             </li>
            
             <li>
-            <Link href="/product" className="block hover:text-blue-600">
-            Product
+            <Link href="/shop" className="block hover:text-blue-600">
+            Shop
             </Link>
           </li>
           <li>

@@ -6,4 +6,4 @@ const query = (strings: TemplateStringsArray, ...values: unknown[]) => {
 };
 
 export const allproducts = defineQuery(query`*[_type == 'product']`);
-export const four = defineQuery(query`*[_type == 'product'][0..3]`);
+export const eight = defineQuery(query`*[_type == 'product'][0..7]`);

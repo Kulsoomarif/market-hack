@@ -16,8 +16,8 @@ const productSchema = defineType({
       name:"slug",
       type:"slug",
       options:{
-        source:"title"}
-    })
+        source:"title"},
+    }),
     defineField({
       name: 'description',
       type: 'text',
@@ -31,6 +31,12 @@ const productSchema = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'inventory',
+      type: 'number',
+      title: 'inventory',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'price',
       type: 'number',
       title: 'Price',
@@ -41,16 +47,19 @@ const productSchema = defineType({
       type: 'array',
       title: 'Tags',
       of: [{ type: 'string' }],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'discountPercentage',
       type: 'number',
-      title: 'Discount Percentage',
+      title: 'discountPercentage',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'isNew',
       type: 'boolean',
       title: 'New Badge',
+      validation: (rule) => rule.required(),
     }),
   ],
 });
