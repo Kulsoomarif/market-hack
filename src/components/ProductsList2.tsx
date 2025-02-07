@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { eight } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import Swal from 'sweetalert2';
+import { addtoCart } from '@/app/actions/actions';
 
 type Product = {
   _id: string;
@@ -27,7 +29,16 @@ type Product = {
 
 export default async function ProductsList2() {
   const products: Product[] = await sanityFetch({ query: eight });
-
+const handleAddtoCart = (e: React.MouseEvent, product: Product) => {
+    e.preventDefault();
+    Swal.fire({
+      position: "top-right",
+      icon:"success",
+      title:`${product.title} added to cart`,
+      showConfirmButton:false,
+      timer:1000
+    })
+    addtoCart (product);
   return (
     <div>
       <section className="bg-gray-100 py-16">
@@ -61,4 +72,14 @@ export default async function ProductsList2() {
       </section>
     </div>
   );
+  <button
+       className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md              
+       hover:shadow-lg hover:scale-110 transition-transform duration-200 ease-in-out mt-2 w-full"
+       onClick={(e) => handleAddtoCart(e, product)}
+                  >
+                    Add To Cart
+                  </button>
+
+}
+
 }
