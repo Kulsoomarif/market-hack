@@ -1,6 +1,3 @@
-
-
-
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,26 +26,29 @@ type Product = {
 };
 
 type ProductPageProps = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string }; // Corrected: `params` is not a Promise
 };
 
-async function getProduct(slug:string): Promise<Product>{
+async function getProduct(slug: string): Promise<Product> {
   return client.fetch(
-groq`*[type == "product && slug.current ==$slug][0]{
-_id
-title,
-_type,
-productImage,
-description,
-price,
-}`,{slug})
+    groq`*[_type == "product" && slug.current == $slug][0]{
+      _id,
+      title,
+      _type,
+      productImage,
+      description,
+      price,
+    }`,
+    { slug }
+  );
 }
-export default async function ProductPage ({params}:ProductPageProps){
-  const {slug}=await params;
-  const product = await getProduct(slug)
-return(
-<div className="max-w-7xl mx-auto p-4">
-  
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = params; // No need to `await` params
+  const product = await getProduct(slug);
+
+  return (
+    <div className="max-w-7xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
       {product.productImage && (
         <Image
@@ -126,8 +126,5 @@ return(
         </div>
       </footer>
     </div>
-)
-
-};
-
-
+  );
+}
