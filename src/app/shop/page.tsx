@@ -30,7 +30,6 @@ type Product = {
   isNew: boolean;
 };
 
-
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -47,11 +46,11 @@ const Shop = () => {
     e.preventDefault();
     swal.fire({
       position: "top-right",
-      icon:"success",
-      title:`${product.title} added to cart`,
-      showConfirmButton:false,
-      timer:1000
-    })
+      icon: "success",
+      title: `${product.title} added to cart`,
+      showConfirmButton: false,
+      timer: 1000,
+    });
     addtoCart(product);
   };
 
@@ -69,14 +68,15 @@ const Shop = () => {
                 <>
                   <Link href={`/product/${product.slug.current}`}>
                     {product.productImage ? (
-                      <div className="w-62 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden rounded-lg shadow-md">
-                      <Image
-                        src={urlFor(product.productImage.asset).url()} 
-                        alt={product.title}
-                        width={200}
-                        height={200}
-                        className="w-full h-full object-cover"
-                      /></div>
+                      <div className="w-full h-48 overflow-hidden rounded-lg shadow-md">
+                        <Image
+                          src={urlFor(product.productImage.asset).url()}
+                          alt={product.title}
+                          width={300} 
+                          height={300} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     ) : (
                       <div className="flex items-center justify-center bg-gray-200 rounded-lg shadow-md">
                         <span>Image not available</span>
