@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import { groq } from "next-sanity";
-import React from "react";
 
 type Product = {
   _id: string;
@@ -26,12 +25,6 @@ type Product = {
   isNew: boolean;
 };
 
-// ✅ Corrected Type for Next.js Page Props
-type ProductPageProps = {
-  params: { slug: string };
-};
-
-// ✅ Fetch product separately (not inside a React component)
 async function getProduct(slug: string): Promise<Product> {
   return client.fetch(
     groq`*[_type == "product" && slug.current == $slug][0]{
@@ -46,20 +39,26 @@ async function getProduct(slug: string): Promise<Product> {
   );
 }
 
-// ✅ Remove async from page component
-export default function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params; // No need to await
-  const [product, setProduct] = React.useState<Product | null>(null);
+async function getProductSlugs(): Promise<{ slug: string }[]> {
+  const products = await client.fetch(groq`*[_type == "product"]{ slug }`);
+  return products.map((product: { slug: { current: string } }) => ({
+    slug: product.slug.current,
+  }));
+}
 
-  React.useEffect(() => {
-    async function fetchData() {
-      const data = await getProduct(slug);
-      setProduct(data);
-    }
-    fetchData();
-  }, [slug]);
+export async function generateStaticParams() {
+  const products = await getProductSlugs();
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
 
-  if (!product) return <p className="text-center text-gray-500">Loading product...</p>;
+export default async function ProductPage({ params }: { params: { slug: string } }) {
+  const product = await getProduct(params.slug);
+
+  if (!product) {
+    return <p className="text-center text-gray-500">Product not found.</p>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto p-4">
