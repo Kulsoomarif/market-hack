@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import React, { useEffect, useState } from "react";
 import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/actions";
 import Swal from "sweetalert2";
@@ -9,7 +9,7 @@ type Product = {
   title: string;
   slug: { current: string };
   description: string;
-  productImage: { asset: { _id: string; url: string } };
+  productImage?: { asset?: { _id: string; url?: string } }; // Optional properties to prevent errors
   inventory: number;
   price: number;
   tags: string[];
@@ -88,12 +88,21 @@ const Page = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cartItems.map((item) => (
             <div key={item._id} className="border rounded-lg p-4 shadow-md bg-white">
-              {item.productImage && (
-              <Image
-                src={item.productImage.asset.url}
-                alt={item.title}
-                className="w-full h-40 object-cover rounded-md"
-              />)}
+              {/* Image Handling */}
+              {item.productImage?.asset?.url ? (
+                <Image
+                  src={item.productImage.asset.url}
+                  alt={item.title}
+                  className="w-full h-40 object-cover rounded-md"
+                  width={200}
+                  height={200}
+                />
+              ) : (
+                <div className="w-full h-40 flex items-center justify-center bg-gray-200 rounded-md">
+                  <p className="text-gray-500">No Image</p>
+                </div>
+              )}
+
               <h2 className="text-lg font-semibold mt-3">{item.title}</h2>
               <p className="font-bold text-lg mt-2">${item.price.toFixed(2)}</p>
 
@@ -143,5 +152,3 @@ const Page = () => {
 };
 
 export default Page;
-
-
