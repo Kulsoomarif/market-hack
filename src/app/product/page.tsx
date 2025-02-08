@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import { groq } from "next-sanity";
+import React from "react";
 
 type Product = {
   _id: string;
@@ -25,10 +26,12 @@ type Product = {
   isNew: boolean;
 };
 
+// ✅ Corrected Type for Next.js Page Props
 type ProductPageProps = {
-  params: { slug: string }; // Corrected: `params` is not a Promise
+  params: { slug: string };
 };
 
+// ✅ Fetch product separately (not inside a React component)
 async function getProduct(slug: string): Promise<Product> {
   return client.fetch(
     groq`*[_type == "product" && slug.current == $slug][0]{
@@ -43,9 +46,20 @@ async function getProduct(slug: string): Promise<Product> {
   );
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params; // No need to `await` params
-  const product = await getProduct(slug);
+// ✅ Remove async from page component
+export default function ProductPage({ params }: ProductPageProps) {
+  const { slug } = params; // No need to await
+  const [product, setProduct] = React.useState<Product | null>(null);
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const data = await getProduct(slug);
+      setProduct(data);
+    }
+    fetchData();
+  }, [slug]);
+
+  if (!product) return <p className="text-center text-gray-500">Loading product...</p>;
 
   return (
     <div className="max-w-7xl mx-auto p-4">
